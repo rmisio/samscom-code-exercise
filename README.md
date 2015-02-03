@@ -13,7 +13,7 @@ Welcome to the Rosetta web exercise, and thank you for your the time. The purpos
 5. Hand-off completed project to team
 
 ### Notes
-You're welcome to use whatever libraries, build tools, editors you choose, to deliver the best, most easily maintainable product. Try to replicate the functionality and animations in the sample video as closely as possible. You only need to build the 3 device slider with support for Note Edge features only. You can ignnore the other modules in the video example, as well as the header and footer of the site. Basically, build out what is supplied in the PSD. If you have any questions regarding the project please reach out to us via email.
+You're welcome to use whatever libraries, build tools, editors you choose, to deliver the best, most easily maintainable product. Try to replicate the functionality and animations in the sample video as closely as possible. You only need to build the 3 device slider with support for the Note Edge features. You can ignnore the other modules in the video example, as well as the header and footer of the site. Basically, build out what is supplied in the PSD. If you have any questions regarding the project please reach out to us via email.
 
 ### Browser Support
 * IE9+
