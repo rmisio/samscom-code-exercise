@@ -14,17 +14,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // colors
 $orange:  #fd6500;
-$brand-primary: $orange;
+
+// $brand-primary: $orange;
 $page-bg-color: #0a0a0e;
-$link-color: $brand-primary;
+// $link-color: $brand-primary;
 $text-color: #fff;
 
 // fonts
 @include font-face('Samsung Interface', fonts/Samsung-Interface/samsungif_rg-webfont);
 $font-family-samsungif: 'Samsung Interface', sans-serif;
-$font-family-droid: 'Droid Sans', sans-serif;
 $font-family-base: $font-family-samsungif;
-$font-family-headings: $font-family-droid;
 
 // mixins
 @mixin transform($transforms) {
@@ -48,32 +47,97 @@ button.unstyled {
 }
 
 .container {
-  width: 1572px;
+  max-width: 1572px;
 }
 
 .inner-container {
-  // height: 789px;
-  height: 389px;
+  height: 789px;
   overflow: hidden;
   //todo: adjust margin!
   margin: 10px auto;
   border-top: 1px solid $text-color;
   border-bottom: 1px solid $text-color;
 
-  .devices {
-    div {
-      padding: 10px 60px 10px 0;
+  .slide {
+    .title {
+      padding-top: 25px;
 
-      button {
-        width: 44px;
-        height: 44px;
-        background: transparent url(../images/circular-arrow.png) no-repeat;
-        @include transition(transform 150ms ease);
+      h1 {
+        display: inline-block;
+        padding: 0 15px;
+        font-size: 60px;
+        margin-top: 0;
+        position: relative;
+        top: 10px;
+      }
+      
+      p {
+        display: inline-block;
+        color: #b5bdc0;
+        padding: 12px 15px;
+        border-left: 1px solid #4e5058;
+      }
+    }
 
-        &:hover {
-          @include transform(rotate(90deg));
-          @include transition(transform 150ms ease);
+    .devices {
+      position: relative;
+
+      li {
+        position: absolute;
+        width: 40%;
+        height: 100px;
+        height: 800px;
+
+        div {
+          height: 44px;
+
+          a {
+            float: right;
+            width: 44px;
+            height: 44px;
+            background: transparent url(../images/circular-arrow.png) no-repeat;
+            @include transition(transform 150ms ease);
+
+            &:hover {
+              @include transform(rotate(90deg));
+              @include transition(transform 150ms ease);
+            }
+          }
         }
+
+        &.device-note-edge {
+          left: 1%;
+          z-index: 500;
+          background: transparent url(../images/photo-galaxy-note-edge.png) left bottom 122px no-repeat;
+          background-size: contain;
+
+          div {
+            width: 264px;
+            background: transparent url(../images/logo-galaxy-note-edge.png) no-repeat 0 9px;
+          }
+        }
+
+        &.device-note-4 {
+          left: 31%;
+          z-index: 400;
+          background: transparent url(../images/photo-galaxy-note-4.png) left bottom 122px no-repeat;
+
+          div {
+            width: 250px;
+            background: transparent url(../images/logo-galaxy-note-4.png) no-repeat 0 9px;
+          }
+        }
+      
+        &.device-gear-s {
+          left: 63%;
+          z-index: 300;
+          background: transparent url(../images/photo-gear-s.png) left bottom 122px no-repeat;
+
+          div {
+            width: 168px;
+            background: transparent url(../images/logo-gear-s.png) no-repeat 0 6px;
+          }
+        }      
       }
     }
   }
