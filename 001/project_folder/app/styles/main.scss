@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@import "_font-face.scss";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -10,8 +12,71 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
+// colors
+$orange:  #fd6500;
+$brand-primary: $orange;
+$page-bg-color: #0a0a0e;
+$link-color: $brand-primary;
+$text-color: #fff;
+
+// fonts
+@include font-face('Samsung Interface', fonts/Samsung-Interface/samsungif_rg-webfont);
+$font-family-samsungif: 'Samsung Interface', sans-serif;
+$font-family-droid: 'Droid Sans', sans-serif;
+$font-family-base: $font-family-samsungif;
+$font-family-headings: $font-family-droid;
+
+// mixins
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+body {
+  background: $page-bg-color;
+  color: $text-color;
+  font: normal 18px/150% $font-family-samsungif;
+}
+
+button.unstyled {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
 .container {
   width: 1572px;
+}
+
+.inner-container {
+  // height: 789px;
+  height: 389px;
+  overflow: hidden;
+  //todo: adjust margin!
+  margin: 10px auto;
+  border-top: 1px solid $text-color;
+  border-bottom: 1px solid $text-color;
+
+  .devices {
+    div {
+      padding: 10px 60px 10px 0;
+
+      button {
+        width: 44px;
+        height: 44px;
+        background: transparent url(../images/circular-arrow.png) no-repeat;
+        @include transition(transform 150ms ease);
+
+        &:hover {
+          @include transform(rotate(90deg));
+          @include transition(transform 150ms ease);
+        }
+      }
+    }
+  }
 }
 
 /* Responsive: Portrait tablets and up */
