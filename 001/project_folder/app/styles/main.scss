@@ -66,84 +66,85 @@ button.unstyled {
     left: 0;
     right: 0;
 
-    .title {
-      padding-top: 25px;
+    &.intro {
+      .title {
+        padding-top: 25px;
+        text-align: center;
 
-      h1 {
-        display: inline-block;
-        padding: 0 15px;
-        font-size: 60px;
-        margin-top: 0;
-        position: relative;
-        top: 10px;
+        h1 {
+          display: inline-block;
+          padding: 0 15px;
+          font-size: 60px;
+          margin-top: 0;
+          position: relative;
+          top: 10px;
+        }
+        
+        p {
+          display: inline-block;
+          color: #b5bdc0;
+          padding: 12px 15px;
+          border-left: 1px solid #4e5058;
+        }
       }
-      
-      p {
-        display: inline-block;
-        color: #b5bdc0;
-        padding: 12px 15px;
-        border-left: 1px solid #4e5058;
-      }
-    }
 
-    .devices {
-      li {
-        position: absolute;
-        bottom: 0;
+      .devices {
+        li {
+          position: absolute;
+          bottom: 0;
+          text-align: center;
 
-        div {
-          height: 44px;
+          div {
+            margin: 0 auto 25px;
+            display: inline-block;
 
-          a {
-            float: right;
-            width: 44px;
-            height: 44px;
-            background: transparent url(../images/circular-arrow.png) no-repeat;
-            @include transition(transform 150ms ease);
+            img {
+              margin: 10px 15px;
+            }
 
-            &:hover {
-              @include transform(rotate(90deg));
+            a {
+              float: right;
+              width: 44px;
+              height: 44px;
+              background: transparent url(../images/circular-arrow.png) no-repeat;
               @include transition(transform 150ms ease);
+
+              &:hover {
+                @include transform(rotate(90deg));
+                @include transition(transform 150ms ease);
+              }
             }
           }
-        }
 
-        &.device-note-edge {
-          width: 38%;
-          left: 1%;
-          z-index: 500;
-          // background: transparent url(../images/photo-galaxy-note-edge.png) left bottom 122px no-repeat;
-          // background-size: contain;
+          &.device-note-edge {
+            width: 38%;
+            left: 1%;
+            z-index: 500;
 
-          div {
-            width: 264px;
-            background: transparent url(../images/logo-galaxy-note-edge.png) no-repeat 0 9px;
+            div {
+              position: relative;
+              right: 28px;
+            }
           }
-        }
 
-        &.device-note-4 {
-          width: 40%;
-          left: 33%;
-          z-index: 400;
-          // background: transparent url(../images/photo-galaxy-note-4.png) left bottom 122px no-repeat;
-
-          div {
-            width: 250px;
-            background: transparent url(../images/logo-galaxy-note-4.png) no-repeat 0 9px;
+          &.device-note-4 {
+            width: 40%;
+            left: 33%;
+            z-index: 400;
           }
-        }
-      
-        &.device-gear-s {
-          width: 34%;
-          left: 66%;
-          z-index: 300;
-          // background: transparent url(../images/photo-gear-s.png) left bottom 122px no-repeat;
+        
+          &.device-gear-s {
+            width: 34%;
+            left: 66%;
+            z-index: 300;
 
-          div {
-            width: 168px;
-            background: transparent url(../images/logo-gear-s.png) no-repeat 0 6px;
-          }
-        }      
+            div {
+              img {
+                margin-top: 4px;
+              }
+            }
+          }      
+        }
       }
     }
   }
@@ -168,5 +169,23 @@ button.unstyled {
 @media (max-width: $screen-lg-min) {
   .container {
     width: 100%;
+  }
+
+  .slide-container {
+    .slide.intro {
+      .title p {
+        display: block;
+        border-left: 0;
+      }
+
+      .devices li {
+        bottom: -40px;
+
+        div img {
+          width: 60%;
+          margin: 14px 10px;
+        }
+      }
+    }
   }
 }
