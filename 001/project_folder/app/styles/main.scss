@@ -13,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 // colors
-$orange:  #fd6500;
+$blue-light:  #20a2ff;
 
 // $brand-primary: $orange;
 $page-bg-color: #0a0a0e;
@@ -26,12 +26,21 @@ $font-family-samsungif: 'Samsung Interface', sans-serif;
 $font-family-base: $font-family-samsungif;
 
 // mixins
+// todo: move to seperate file!
 @mixin transform($transforms) {
      -moz-transform: $transforms;
        -o-transform: $transforms;
       -ms-transform: $transforms;
   -webkit-transform: $transforms;
           transform: $transforms;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 body {
@@ -82,13 +91,53 @@ button.unstyled {
   .slide-nav {
     position: absolute;
     top: 50%;
-    right: -15px;
+    right: 15px;
+    margin-top: -65px;
+    z-index: 1000;
 
     li {
-      width: 10px;
-      height: 10px;
-      background-color: orange;
-      margin: 5px 0;
+      height: 30px;
+      width: 30px;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d;          
+
+      span {
+        display: block;
+        width: 15px;
+        height: 15px;
+        margin: 0 auto;
+        border: 2px solid $blue-light;
+        border-radius: 50%;  
+        @include vertical-align;
+        @include transition(all 100ms ease);
+
+        &:hover:not(.active) {
+          cursor: pointer;
+          height: 18px;
+          width: 18px;
+          @include transition(all 100ms ease);
+        }
+
+        &.active {
+          background-color: $blue-light;
+        }              
+      }
+
+      &:first-child {
+        height: 42px;
+
+        span {
+          width: 25px;
+          height: 25px;
+
+          &:hover:not(.active) {
+            height: 28px;
+            width: 28px;
+            @include transition(all 100ms ease);
+          }
+        }
+      }
     }
   }
 
