@@ -1,5 +1,5 @@
 (function() {
-    var $slideContainer = $('.slide-container');
+    var $slideContainer = $('.device-explorer .page-section-inner');
 
     // If below the largest break point, adjust the height of the
     // Slide Container to be a percentage of it's width

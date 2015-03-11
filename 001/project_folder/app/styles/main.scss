@@ -47,103 +47,142 @@ button.unstyled {
 }
 
 .container {
-  max-width: 1572px;
+  width: 100%;
+  padding: 0;
 }
 
-.slide-container {
-  height: 789px;
-  overflow: hidden;
-  position: relative;
-  //todo: adjust margin!
-  margin: 10px auto;
-  border-top: 1px solid $text-color;
+.page-section-wrapper {
+  margin-top: 10px;
   border-bottom: 1px solid $text-color;
 
-  .slide {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  &:last-child {
+    border-bottom: 0;
+  }
 
-    &.intro {
-      .title {
-        padding-top: 25px;
-        text-align: center;
+  .page-section {
+    max-width: 1572px;
+    margin: 0 auto;
 
-        h1 {
-          display: inline-block;
-          padding: 0 15px;
-          font-size: 60px;
-          margin-top: 0;
-          position: relative;
-          top: 10px;
-        }
-        
-        p {
-          display: inline-block;
-          color: #b5bdc0;
-          padding: 12px 15px;
-          border-left: 1px solid #4e5058;
-        }
+    .page-section-inner {
+      max-width: 1216px;
+      margin: 0 auto;
+    }
+
+    &.dummy-content {
+      .page-section-inner {
+        padding: 25px 15px;
       }
+    }
+  }
+}
 
-      .devices {
-        li {
-          position: absolute;
-          bottom: 0;
+.device-explorer {
+  position: relative;
+
+  .slide-nav {
+    position: absolute;
+    top: 50%;
+    right: -15px;
+
+    li {
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+      margin: 5px 0;
+    }
+  }
+
+  .page-section-inner {
+    height: 789px;
+    overflow: hidden;
+    position: relative;
+
+    .slide {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      &.intro {
+        .title {
+          padding-top: 25px;
           text-align: center;
 
-          div {
-            margin: 0 auto 25px;
+          h2 {
             display: inline-block;
-
-            img {
-              margin: 10px 15px;
-            }
-
-            a {
-              float: right;
-              width: 44px;
-              height: 44px;
-              background: transparent url(../images/circular-arrow.png) no-repeat;
-              @include transition(transform 150ms ease);
-
-              &:hover {
-                @include transform(rotate(90deg));
-                @include transition(transform 150ms ease);
-              }
-            }
+            padding: 0 15px;
+            font-size: 60px;
+            margin-top: 0;
+            position: relative;
+            top: 10px;
           }
+          
+          p {
+            display: inline-block;
+            color: #b5bdc0;
+            padding: 12px 15px;
+            border-left: 1px solid #4e5058;
+          }
+        }
 
-          &.device-note-edge {
-            width: 38%;
-            left: 1%;
-            z-index: 500;
+        .devices {
+          li {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
 
             div {
-              position: relative;
-              right: 28px;
-            }
-          }
+              margin: 0 auto 25px;
+              display: inline-block;
 
-          &.device-note-4 {
-            width: 40%;
-            left: 33%;
-            z-index: 400;
-          }
-        
-          &.device-gear-s {
-            width: 34%;
-            left: 66%;
-            z-index: 300;
-
-            div {
               img {
-                margin-top: 4px;
+                margin: 10px 15px;
+              }
+
+              a {
+                float: right;
+                width: 44px;
+                height: 44px;
+                background: transparent url(../images/circular-arrow.png) no-repeat;
+                @include transition(transform 150ms ease);
+
+                &:hover {
+                  @include transform(rotate(90deg));
+                  @include transition(transform 150ms ease);
+                }
               }
             }
-          }      
+
+            &.device-note-edge {
+              width: 38%;
+              left: 1%;
+              z-index: 500;
+
+              div {
+                position: relative;
+                right: 28px;
+              }
+            }
+
+            &.device-note-4 {
+              width: 40%;
+              left: 33%;
+              z-index: 400;
+            }
+          
+            &.device-gear-s {
+              width: 34%;
+              left: 66%;
+              z-index: 300;
+
+              div {
+                img {
+                  margin-top: 4px;
+                }
+              }
+            }      
+          }
         }
       }
     }
@@ -167,23 +206,25 @@ button.unstyled {
 
 /* Large devices (large desktops, 1200px and down) */
 @media (max-width: $screen-lg-min) {
-  .container {
-    width: 100%;
-  }
+  // .container {
+  //   width: 100%;
+  // }
 
-  .slide-container {
-    .slide.intro {
-      .title p {
-        display: block;
-        border-left: 0;
-      }
+  .device-explorer {
+    .page-section-inner {
+      .slide.intro {
+        .title p {
+          display: block;
+          border-left: 0;
+        }
 
-      .devices li {
-        bottom: -40px;
+        .devices li {
+          bottom: -40px;
 
-        div img {
-          width: 60%;
-          margin: 14px 10px;
+          div img {
+            width: 60%;
+            margin: 14px 10px;
+          }
         }
       }
     }
