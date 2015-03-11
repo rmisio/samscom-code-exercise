@@ -2,7 +2,8 @@
     var $deviceExplorer = $('.device-explorer'),
         $slideContainer = $('.page-section-inner', $deviceExplorer),
         $slides = $('.slide', $slideContainer),
-        $slideNavButtons = $('.slide-nav span', $deviceExplorer);
+        $slideNav = $('.slide-nav', $deviceExplorer);
+        $slideNavButtons = $('span', $slideNav);
 
     $('a[href=#]').click(function() {
         return false;
@@ -30,14 +31,31 @@
 
     function pageSlideNavigate(index) {
         if (typeof index === 'number') {
+            if (index === 0) {
+                $slideNav.addClass('fade-out')
+                    .removeClass('fade-in');
+                $slides.eq(0)
+                    .removeClass('animate-on')
+                    .addClass('animate-prepare');
+            } else {
+                $slideNav.addClass('fade-in')
+                    .removeClass('fade-out');                
+            }
+
             $slideNavButtons.filter('.active')
                 .removeClass('active');
 
             $slideContainer.animate({
                 scrollTop: $slideContainer.height() * index
-            }, 400, function() {
+            }, 250, function() {
                 $slideNavButtons.eq(index)
                     .addClass('active');
+
+                if (index === 0) {
+                    $slides.eq(index)
+                        .removeClass('animate-prepare')
+                        .addClass('animate-on');
+                }
             });
         }
     }

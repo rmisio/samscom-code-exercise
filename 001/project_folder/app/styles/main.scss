@@ -1,6 +1,7 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "geoffgraham.animate.scss/animate.scss";
 // endbower
 
 @import "_font-face.scss";
@@ -93,6 +94,19 @@ button.unstyled {
     right: 15px;
     margin-top: -65px;
     z-index: 1000;
+    opacity: 0;
+
+    &.fade-in {
+      @include fadeInUp(
+        $duration: 300ms
+      );
+    }
+
+    &.fade-out {
+      @include fadeOut(
+        $duration: 300ms
+      );
+    }
 
     li {
       height: 30px;
@@ -146,11 +160,8 @@ button.unstyled {
     position: relative;
 
     .slide {
-      // position: absolute;
-      // top: 0;
-      // bottom: 0;
-      // left: 0;
-      // right: 0;
+      position: relative;
+      overflow: hidden;
       height: 789px;
 
       &.intro {
@@ -173,6 +184,34 @@ button.unstyled {
             padding: 12px 15px;
             border-left: 1px solid #4e5058;
           }
+        }
+
+        &.animate-prepare {
+          .devices > li > img {
+            opacity: 0;
+          }
+        }
+
+        &.animate-on {
+          .device-note-edge > img {
+            @include fadeInUp(
+              $duration: 1s
+            );              
+          }
+
+          .device-note-4 > img {
+            @include fadeInUp(
+              $duration: 1s,
+              $delay: .3s
+            );              
+          }
+
+          .device-gear-s > img {
+            @include fadeInUp(
+              $duration: 1s,
+              $delay: .6s
+            );              
+          }        
         }
 
         .devices {
@@ -255,10 +294,6 @@ button.unstyled {
 
 /* Large devices (large desktops, 1200px and down) */
 @media (max-width: $screen-lg-min) {
-  // .container {
-  //   width: 100%;
-  // }
-
   .device-explorer {
     .page-section-inner {
       .slide.intro {
