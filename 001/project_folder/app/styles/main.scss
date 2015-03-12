@@ -457,6 +457,7 @@ body {
           .mobile-only-content { display: block; }
 
           .mobile-device-buttons {
+            margin-bottom: 15px;
             text-align: center;
 
             a {
@@ -496,6 +497,8 @@ body {
             background-color: #1d1e25;
 
             .item {
+              @include transition(0.3s ease-in-out left);
+
               &.animate-prepare {
                 img {
                   opacity: 0;
@@ -557,6 +560,7 @@ body {
             .carousel-text-content {
               .item {
                 position: realtive;
+                @include transition(0.3s ease-in-out left);
 
                 .buttons {
                   margin: 30px auto 0;
