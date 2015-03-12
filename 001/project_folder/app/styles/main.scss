@@ -44,20 +44,42 @@ $font-family-base: $font-family-samsungif;
   transform: translateY(-50%);
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 button.unstyled {
   border: 0;
   padding: 0;
   background: transparent;
 }
 
-.btn-dark {
+.btn {
   padding: 10px 20px;
-  border: 1px solid #fff;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-size: 18px;  
 
-  // todo: need to make sprite with dark colored logo
-  // when bg is white
-  &.active {
-    background-color: #fff;
+  &.btn-dark {
+    border: 1px solid #fff;
+
+    // todo: for logo buttons need to make sprite with dark colored logo
+    // when bg is white
+    &.active {
+      background-color: #fff;
+    }
+  }
+
+  &.btn-blue {
+    padding: 10px 20px;
+    border: 1px solid $blue-light;
+    color: $blue-light;
+
+    &:hover {
+      background-color: $blue-light;
+      color: #fff;
+    }
   }
 }
 
@@ -444,7 +466,6 @@ body {
           }
 
           .carousel-controls {
-            width: 95px;
             margin: 0 auto;
 
             li {
@@ -452,7 +473,7 @@ body {
               height: 13px;
               border-radius: 50%;
               background-color: #fff;
-              margin: 25px 8px;              
+              margin: 20px 8px;
               display: inline-block;
               cursor: pointer;
 
@@ -467,19 +488,13 @@ body {
             background-color: #1d1e25;
 
             .item {
-              img {
-                // user-drag: none; 
-                // -moz-user-select: none;
-                // -webkit-user-drag: none;
-              }
-              
               &.animate-prepare {
                 img {
                   opacity: 0;
                 }
               }
 
-              &.animate-on {
+              &.animate-on:not(.dummy) {
                 //todo: the fadeInUp should really be on the img
                 //  but for some reason that's breaking the layout
                 //  on the notifications slide. Maybe the
@@ -513,8 +528,53 @@ body {
               }
             }
           }
+
+          .mobile-sub-content {
+            background-color: #333;
+            padding: 5px 20px 15px;
+            text-align: center;
+
+            h3 {
+              font-size: 30px;
+              margin-bottom: 15px;
+              margin-top: 10px;
+            }
+
+            p {
+              line-height: 32px;
+
+
+            }
+
+            .carousel-text-content {
+              .item {
+                position: realtive;
+
+                .buttons {
+                  margin: 30px auto 0;
+
+                  .btn {
+                    margin-bottom: 20px;
+                    width: 175px;
+                    height: 50px;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
+  }
+}
+
+/* Smallest devices (tablets, 375px and down) */
+@media (max-width: 375px) {
+  .device-explorer .page-section-inner .page-slide.intro .intro-inner {
+    .mobile-sub-content .carousel-text-content .buttons .btn {
+      margin-right: 0;
+    } 
   }
 }

@@ -7,7 +7,8 @@
         $carouselControlButtons = $('.carousel-controls li', $deviceExplorer),
         $mobilePhotoCarousel,
         $mobilePhotoCarouselSlides,
-        $mobileContentCarousel;
+        $mobileContentCarousel,
+        $mobileContentCarouselSlides;
 
     $('a[href=#]').click(function() {
         return false;
@@ -57,13 +58,15 @@
     // set-up the mobile carousels
     $mobilePhotoCarousel = $('.carousel-photos').carousel({
         interval: false
-    })
-    $mobilePhotoCarouselSlides = $('.item', $mobilePhotoCarousel);
+    });
 
     $mobilePhotoCarousel.on('slide.bs.carousel', function (e) {
+        var $target = $(e.relatedTarget);
+
         $carouselControlButtons.removeClass('active');
-        $(e.relatedTarget).removeClass('animate-on')
+        $target.removeClass('animate-on')
             .addClass('animate-prepare');
+        $mobileContentCarousel.carousel($target.index());
     }).on('slid.bs.carousel', function (e) {
         var $target = $(e.relatedTarget);
 
@@ -71,16 +74,23 @@
             .addClass('animate-on');
         $carouselControlButtons.eq($target.index())
             .addClass('active');
-    });    
+    });
+
+    $mobileContentCarousel = $('.carousel-text-content').carousel({
+        interval: false
+    });
 
     $carouselControlButtons.click(function(e) {
         $mobilePhotoCarousel.carousel($(this).index());
     });
 
-    // If below the largest break point, adjust the height of the
-    // slides and their container to be a percentage of their width
-    // (i.e. maintain the ratio of 1216 X 789)
-    function setSlideHeights() {
+    $mobilePhotoCarouselSlides = $('.item', $mobilePhotoCarousel);
+    $mobileContentCarouselSlides = $('.item', $mobileContentCarousel);
+
+    // Depending on what media query is active, set the height of
+    // carousel / slide containers to be a percentage of their width.
+    // (i.e. have them maintin a specific aspect ratio)
+    function setContainerHeights() {
         if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
             $slideContainer.add($slides)
                 .height($slideContainer.width() * (789 / 1216));
@@ -88,16 +98,42 @@
             $slideContainer.add($slides)
                 .css('height', '');
 
+            // (min-width: 449px) and 
             if (Modernizr.mq('(max-width: 768px)')) {
+                var largestSize;
+
                 $mobilePhotoCarouselSlides.height($mobilePhotoCarousel.width() * (335 / 375));
+
+                // todo: for this one, we will size the slides to be equal to the height
+                // of the largest one. Would using display:table do just that for us
+                // albeit with pure css? hmm...
+                $mobileContentCarouselSlides.each(function() {
+                    var $this = $(this),
+                        height;
+
+                    $this.css('height', '');
+                    height = $(this).outerHeight();
+                    console.log('---- ' + height);
+
+                    if (largestSize) {
+                        if (height > largestSize) {
+                            largestSize = height;
+                        }
+                    } else {
+                        largestSize = height;
+                    }
+                });
+
+                console.log(largestSize);
+                $mobileContentCarouselSlides.height(largestSize);
             }
         }
     }
-    setSlideHeights();
+    setContainerHeights();
 
     $(window).resize(
         _.throttle(function() {
-            setSlideHeights();
+            setContainerHeights();
         }, 100)
     );    
 })();
