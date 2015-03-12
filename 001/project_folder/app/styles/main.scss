@@ -467,6 +467,12 @@ body {
             background-color: #1d1e25;
 
             .item {
+              img {
+                // user-drag: none; 
+                // -moz-user-select: none;
+                // -webkit-user-drag: none;
+              }
+              
               &.animate-prepare {
                 img {
                   opacity: 0;
