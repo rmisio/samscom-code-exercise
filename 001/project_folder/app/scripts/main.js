@@ -1,9 +1,12 @@
 (function() {
     var $deviceExplorer = $('.device-explorer'),
         $slideContainer = $('.page-section-inner', $deviceExplorer),
-        $slides = $('.slide', $slideContainer),
-        $slideNav = $('.slide-nav', $deviceExplorer);
-        $slideNavButtons = $('span', $slideNav);
+        $slides = $('.page-slide', $slideContainer),
+        $slideNav = $('.page-slide-nav', $deviceExplorer),
+        $slideNavButtons = $('span', $slideNav),
+        $carouselControlButtons = $('.carousel-controls li', $deviceExplorer),
+        $mobilePhotoCarousel,
+        $mobileContentCarousel;
 
     $('a[href=#]').click(function() {
         return false;
@@ -13,7 +16,7 @@
     // slides and their container to be a percentage of their width
     // (i.e. maintain the ratio of 1216 X 789)
     function setSlideHeights() {
-        if (Modernizr.mq('(max-width: 1200px)')) {
+        if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
             $slideContainer.add($slides)
                 .height($slideContainer.width() * (789 / 1216));
         } else {
@@ -68,5 +71,14 @@
         pageSlideNavigate(
             $(this).parents('li').index()
         );
+    });
+
+    // set-up the mobile carousels
+    $mobilePhotoCarousel = $('.carousel-photos').carousel({
+        interval: false
+    })
+
+    $carouselControlButtons.click(function(e) {
+        $mobilePhotoCarousel.carousel($(this).index());
     });
 })();
