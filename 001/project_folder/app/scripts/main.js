@@ -113,7 +113,6 @@
 
                     $this.css('height', '');
                     height = $(this).outerHeight();
-                    console.log('---- ' + height);
 
                     if (largestSize) {
                         if (height > largestSize) {
@@ -124,7 +123,6 @@
                     }
                 });
 
-                console.log(largestSize);
                 $mobileContentCarouselSlides.height(largestSize);
             }
         }
