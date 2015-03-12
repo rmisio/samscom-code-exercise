@@ -54,6 +54,8 @@ button.unstyled {
   padding: 10px 20px;
   border: 1px solid #fff;
 
+  // todo: need to make sprite with dark colored logo
+  // when bg is white
   &.active {
     background-color: #fff;
   }
@@ -122,7 +124,7 @@ body {
       width: 30px;
       -webkit-transform-style: preserve-3d;
       -moz-transform-style: preserve-3d;
-      transform-style: preserve-3d;          
+      transform-style: preserve-3d;
 
       span {
         display: block;
@@ -450,11 +452,58 @@ body {
               height: 13px;
               border-radius: 50%;
               background-color: #fff;
-              margin: 0 8px;              
+              margin: 25px 8px;              
               display: inline-block;
+              cursor: pointer;
 
               &.active {
                 background-color: $blue-light;
+              }
+            }
+          }
+
+          .carousel-photos {
+            //todo: replace with gradients
+            background-color: #1d1e25;
+
+            .item {
+              &.animate-prepare {
+                img {
+                  opacity: 0;
+                }
+              }
+
+              &.animate-on {
+                //todo: the fadeInUp should really be on the img
+                //  but for some reason that's breaking the layout
+                //  on the notifications slide. Maybe the
+                //  @vertical-align is interfering in some way?
+                // img {
+                  @include fadeInUp(
+                    $duration: 300ms
+                  );
+                // }
+              }              
+            }
+
+            .notifications {
+              -webkit-transform-style: preserve-3d;
+              -moz-transform-style: preserve-3d;
+              transform-style: preserve-3d;              
+
+              img {
+                @include vertical-align;
+              }
+            }
+
+            .pen {
+              img {
+                margin: 0 auto;
+                max-width: 68%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
               }
             }
           }

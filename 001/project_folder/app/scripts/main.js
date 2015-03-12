@@ -6,31 +6,12 @@
         $slideNavButtons = $('span', $slideNav),
         $carouselControlButtons = $('.carousel-controls li', $deviceExplorer),
         $mobilePhotoCarousel,
+        $mobilePhotoCarouselSlides,
         $mobileContentCarousel;
 
     $('a[href=#]').click(function() {
         return false;
     });
-
-    // If below the largest break point, adjust the height of the
-    // slides and their container to be a percentage of their width
-    // (i.e. maintain the ratio of 1216 X 789)
-    function setSlideHeights() {
-        if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
-            $slideContainer.add($slides)
-                .height($slideContainer.width() * (789 / 1216));
-        } else {
-            $slideContainer.add($slides)
-                .css('height', '');
-        }
-    }
-    setSlideHeights();
-
-    $(window).resize(
-        _.throttle(function() {
-            setSlideHeights();
-        }, 100)
-    );
 
     function pageSlideNavigate(index) {
         if (typeof index === 'number') {
@@ -77,8 +58,46 @@
     $mobilePhotoCarousel = $('.carousel-photos').carousel({
         interval: false
     })
+    $mobilePhotoCarouselSlides = $('.item', $mobilePhotoCarousel);
+
+    $mobilePhotoCarousel.on('slide.bs.carousel', function (e) {
+        $carouselControlButtons.removeClass('active');
+        $(e.relatedTarget).removeClass('animate-on')
+            .addClass('animate-prepare');
+    }).on('slid.bs.carousel', function (e) {
+        var $target = $(e.relatedTarget);
+
+        $target.removeClass('animate-prepare')
+            .addClass('animate-on');
+        $carouselControlButtons.eq($target.index())
+            .addClass('active');
+    });    
 
     $carouselControlButtons.click(function(e) {
         $mobilePhotoCarousel.carousel($(this).index());
     });
+
+    // If below the largest break point, adjust the height of the
+    // slides and their container to be a percentage of their width
+    // (i.e. maintain the ratio of 1216 X 789)
+    function setSlideHeights() {
+        if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
+            $slideContainer.add($slides)
+                .height($slideContainer.width() * (789 / 1216));
+        } else {
+            $slideContainer.add($slides)
+                .css('height', '');
+
+            if (Modernizr.mq('(max-width: 768px)')) {
+                $mobilePhotoCarouselSlides.height($mobilePhotoCarousel.width() * (335 / 375));
+            }
+        }
+    }
+    setSlideHeights();
+
+    $(window).resize(
+        _.throttle(function() {
+            setSlideHeights();
+        }, 100)
+    );    
 })();
