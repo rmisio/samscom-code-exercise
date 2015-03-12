@@ -44,6 +44,30 @@ $font-family-base: $font-family-samsungif;
   transform: translateY(-50%);
 }
 
+// This will add a 20px black arrow on top of the element. If we
+// need additional types of arrows (different color, border, position),
+// this could be abstracted to accomodate that.
+// obtained from: http://cssarrowplease.com/
+@mixin top-black-arrow {
+  position: relative;
+  background: #000000;          
+
+  &:after {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 0, 0, 0);
+    border-bottom-color: #000000;
+    border-width: 20px;
+    margin-left: -20px;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -411,23 +435,7 @@ body {
 
         .intro-inner {
           background-color: black;
-          position: relative;
-          background: #000000;          
-
-          &:after {
-            bottom: 100%;
-            left: 50%;
-            border: solid transparent;
-            content: " ";
-            height: 0;
-            width: 0;
-            position: absolute;
-            pointer-events: none;
-            border-color: rgba(0, 0, 0, 0);
-            border-bottom-color: #000000;
-            border-width: 20px;
-            margin-left: -20px;
-          }
+          @include top-black-arrow;
 
           title {
             margin-bottom: 22px;
@@ -530,9 +538,9 @@ body {
           }
 
           .mobile-sub-content {
-            background-color: #333;
             padding: 5px 20px 15px;
             text-align: center;
+            @include top-black-arrow;
 
             h3 {
               font-size: 30px;
