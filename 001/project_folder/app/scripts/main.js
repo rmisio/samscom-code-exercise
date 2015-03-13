@@ -132,8 +132,8 @@
         _.throttle(function() {
             setContainerHeights();
 
-            // reset page slide nav when returning to the larger layout
-            if (Modernizr.mq('(min-width: 769px)')) {
+            // reset page slide nav when entering mobile layout
+            if (Modernizr.mq('(max-width: 768px)')) {
                 $slideNav.removeClass('fade-in');
                 $slideNavButtons.removeClass('active');
             }
