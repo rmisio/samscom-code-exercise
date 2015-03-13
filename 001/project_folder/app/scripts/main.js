@@ -91,9 +91,18 @@
     // carousel / slide containers to be a percentage of their width.
     // (i.e. have them maintin a specific aspect ratio)
     function setContainerHeights() {
+        var curPageSlideIndex;
+
         if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
             $slideContainer.add($slides)
                 .height($slideContainer.width() * (789 / 1216));
+
+            // adjust the scroll position of the page slides
+            curPageSlideIndex = $slideNavButtons.filter('.active')
+                .parents('li')
+                .index();
+            curPageSlideIndex = curPageSlideIndex === -1 ? 0 : curPageSlideIndex;                
+            $slideContainer.scrollTop($slideContainer.height() * curPageSlideIndex);
         } else {
             $slideContainer.add($slides)
                 .css('height', '');
