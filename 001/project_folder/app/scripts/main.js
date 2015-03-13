@@ -98,7 +98,6 @@
             $slideContainer.add($slides)
                 .css('height', '');
 
-            // (min-width: 449px) and 
             if (Modernizr.mq('(max-width: 768px)')) {
                 var largestSize;
 
@@ -132,6 +131,12 @@
     $(window).resize(
         _.throttle(function() {
             setContainerHeights();
+
+            // reset page slide nav when returning to the larger layout
+            if (Modernizr.mq('(min-width: 769px)')) {
+                $slideNav.removeClass('fade-in');
+                $slideNavButtons.removeClass('active');
+            }
         }, 100)
     );    
 })();

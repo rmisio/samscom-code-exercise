@@ -413,6 +413,10 @@ body {
 /* Small devices (tablets, 768px and down) */
 @media (max-width: $screen-sm-min) {
   .device-explorer {
+    .page-slide-nav {
+        display: none;
+    }
+
     .page-section-inner {
       height: auto;
 
