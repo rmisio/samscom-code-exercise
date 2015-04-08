@@ -23,6 +23,7 @@ $text-color: #fff;
 
 // fonts
 @include font-face('Samsung Interface', '../fonts/Samsung-Interface/samsungif_rg-webfont', null, null, eot woff svg truetype);
+@include font-face('Samsung Interface', '../fonts/Samsung-Interface/samsungif_bd-webfont', bold, null, eot woff svg truetype);
 $font-family-samsungif: 'Samsung Interface', sans-serif;
 $font-family-base: $font-family-samsungif;
 
@@ -209,6 +210,25 @@ body {
               width: 28px;
               @include transition(all 100ms ease);
             }
+          }
+        }
+
+        .tooltip {
+          margin-left: -12px;
+          
+          .tooltip-arrow {
+            border-left-color: $blue-light;
+            right: -7px;
+            border-width: 6px 0px 6px 12px;             
+          }
+
+          .tooltip-inner {
+            background-color: $blue-light;
+            text-transform: uppercase;
+            padding: 5px 8px;
+            border-radius: 0;
+            font-size: 14px;
+            font-weight: bold;            
           }
         }
       }

@@ -166,5 +166,7 @@
                 $slideNavButtons.removeClass('active');
             }
         }, 100)
-    );    
+    );
+
+    $('[data-toggle="tooltip"]').tooltip();    
 })();
