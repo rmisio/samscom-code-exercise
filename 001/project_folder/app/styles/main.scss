@@ -15,9 +15,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // colors
 $blue-light:  #20a2ff;
+$black: #0a0a0e;
 
 // $brand-primary: $orange;
-$page-bg-color: #0a0a0e;
+$page-bg-color: $black;
 // $link-color: $brand-primary;
 $text-color: #fff;
 
@@ -84,11 +85,13 @@ button.unstyled {
   text-align: center;
   text-transform: uppercase;
   border-radius: 0;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   @include transition(all 300ms ease);
 
   &.btn-dark {
     border: 1px solid #fff;
+    background-color: $black;
 
     // todo: for logo buttons need to make sprite with dark colored logo
     // when bg is white
@@ -106,6 +109,17 @@ button.unstyled {
       color: #fff;
     }
   }
+
+  &.btn-blue-alt {
+    border: 1px solid $blue-light;
+    background-color: $blue-light;
+    color: #fff;    
+
+    &:hover {
+      color: $blue-light;
+      background-color: $black;
+    }
+  }  
 }
 
 body {
@@ -675,7 +689,6 @@ body {
 
             a {
               margin-bottom: 15px;
-              margin-right: 15px;
               padding-right: 0;
               padding-left: 0;
               width: 270px;
