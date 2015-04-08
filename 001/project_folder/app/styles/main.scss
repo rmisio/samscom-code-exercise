@@ -144,7 +144,6 @@ body {
 
 .device-explorer {
   &.page-section-wrapper {
-    background: url(../images/bg-page-slider.jpg) center center / cover;
     position: relative;
 
     .page-slide-nav {
@@ -159,6 +158,8 @@ body {
         @include fadeInUp(
           $duration: 600ms
         );
+
+        opacity: 1;
       }
 
       &.fade-out {
@@ -509,39 +510,43 @@ body {
 
 /* Larger Than Small devices (tablets, 769px and --> UP) */
 @media (min-width: $screen-sm-min + 1) {
-  .device-explorer.page-section-wrapper .page-section-inner .page-slide {
-    &.animate-prepare {
-      .page-slide-image {
-        opacity: 0;
-      }
-    }
+  .device-explorer.page-section-wrapper {
+    background: black url(../images/bg-page-slider.jpg) center center / cover;
 
-    &.animate-on {
-      .page-slide-image {
-        @include fadeInUp(
-          $duration: 1s
-        );              
+    .page-section-inner .page-slide {
+      &.animate-prepare {
+        .page-slide-image {
+          opacity: 0;
+        }
       }
-    }
 
-    &.notifications {
-      .page-slide-image {
-        background: transparent url(../images/desktop-photo-notifications.png) bottom center / 100% auto no-repeat;
+      &.animate-on {
+        .page-slide-image {
+          @include fadeInUp(
+            $duration: 1s
+          );              
+        }
       }
-    }
 
-    &.s-pen {
-      .page-slide-image {
-        background: transparent url(../images/photo-pen.png) bottom left / 88% auto no-repeat;
+      &.notifications {
+        .page-slide-image {
+          background: transparent url(../images/desktop-photo-notifications.png) bottom center / 100% auto no-repeat;
+        }
       }
-    }
 
-    &.display {
-      .page-slide-image {
-        background: transparent url(../images/desktop-photo-display.png) bottom center / 100% auto no-repeat;
+      &.s-pen {
+        .page-slide-image {
+          background: transparent url(../images/photo-pen.png) bottom left / auto 90% no-repeat;
+        }
       }
-    }    
-  }  
+
+      &.display {
+        .page-slide-image {
+          background: transparent url(../images/desktop-photo-display.png) bottom center / 100% auto no-repeat;
+        }
+      }    
+    }
+  }
 }
 
 /* Larger Than Small devices, Smaller Than Medium devices */
@@ -673,50 +678,38 @@ body {
           }
 
           .carousel-photos {
-            //todo: replace with gradients
-            background-color: #1d1e25;
+            background: black url(../images/bg-mobile-carousel.png) center center / cover;            
 
             .item {
               @include transition(0.3s ease-in-out left);
 
               &.animate-prepare {
-                img {
-                  opacity: 0;
-                }
+                opacity: 0;
               }
 
-              &.animate-on:not(.dummy) {
-                //todo: the fadeInUp should really be on the img
-                //  but for some reason that's breaking the layout
-                //  on the notifications slide. Maybe the
-                //  @vertical-align is interfering in some way?
-                // img {
-                  @include fadeInUp(
-                    $duration: 300ms
-                  );
-                // }
+              &.animate-on:not(.display) {
+                @include fadeInUp(
+                  $duration: 300ms
+                );
+              }
+
+              &.animate-on.display {
+                @include fadeInRight(
+                  $duration: 300ms
+                );
               }              
             }
 
             .notifications {
-              -webkit-transform-style: preserve-3d;
-              -moz-transform-style: preserve-3d;
-              transform-style: preserve-3d;              
-
-              img {
-                @include vertical-align;
-              }
+              background: transparent url(../images/photo-notifications.png) center center / 100% auto no-repeat;
             }
 
             .pen {
-              img {
-                margin: 0 auto;
-                max-width: 68%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-              }
+              background: transparent url(../images/photo-pen.png) top 30px center/auto 100% no-repeat;
+            }
+
+            .display {
+              background: transparent url(../images/photo-display.png) center left / 100% auto no-repeat;
             }
           }
 
@@ -751,6 +744,8 @@ body {
                     height: 50px;
                     margin-right: 10px;
                     margin-left: 10px;
+                    padding-right: 10px;
+                    padding-left: 10px;                    
                   }
                 }
               }
