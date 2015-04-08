@@ -8,7 +8,8 @@
         $mobilePhotoCarousel,
         $mobilePhotoCarouselSlides,
         $mobileContentCarousel,
-        $mobileContentCarouselSlides;
+        $mobileContentCarouselSlides,
+        hammeMobilePhotoCar;
 
     $('a[href=#]').click(function() {
         return false;
@@ -85,6 +86,16 @@
 
     $mobilePhotoCarouselSlides = $('.item', $mobilePhotoCarousel);
     $mobileContentCarouselSlides = $('.item', $mobileContentCarousel);
+
+    // set-up touch events for the mobile photo carousel
+    hammeMobilePhotoCar = new Hammer($mobilePhotoCarousel[0], {});
+    hammeMobilePhotoCar.on('panend', function(e) {
+        if (e.offsetDirection === 4) {
+            $mobilePhotoCarousel.carousel('next');
+        } else {
+            $mobilePhotoCarousel.carousel('prev');
+        }
+    });
 
     // Depending on what media query is active, set the height of
     // carousel / slide containers to be a percentage of their width.
