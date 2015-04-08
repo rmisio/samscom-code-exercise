@@ -26,7 +26,7 @@
 
             $slides.eq(index)
                 .removeClass('animate-on')
-                .addClass('animate-prepare');            
+                .addClass('animate-prepare');
 
             $slideNavButtons.filter('.active')
                 .removeClass('active');
@@ -44,7 +44,7 @@
         }
     }
 
-    $('.device-note-4 a', $deviceExplorer).click(function() {
+    $('.device-note-edge a', $deviceExplorer).click(function() {
         pageSlideNavigate(1);
     });
 
@@ -94,14 +94,18 @@
 
         if (Modernizr.mq('(min-width: 769px)')) {
             if (Modernizr.mq('(max-width: 1200px)')) {
-                // $slideContainer.add($slides)
-                $slideContainer
+                $slideContainer.add($slides)
                     .height(
                         Math.floor($slideContainer.width() * (789 / 1216))
                     );
             }
 
             // adjust the scroll position of the page slides
+            // ======
+            // todo: kind of entering spaghetti code territory here.
+            // it would be better to bulk up the pageSlide API to
+            // expose centralized method(s) of handling the following
+            // few lines, rather than mucking with the pageSlide here.
             curPageSlideIndex = $slideNavButtons.filter('.active')
                 .parents('li')
                 .index();

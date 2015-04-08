@@ -79,7 +79,7 @@ button.unstyled {
 }
 
 .btn {
-  padding: 15px 60px;
+  padding: 13px 60px;
   text-align: center;
   text-transform: uppercase;
   border-radius: 0;
@@ -143,231 +143,276 @@ body {
 }
 
 .device-explorer {
-  position: relative;
-
-  .page-slide-nav {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    margin-top: -65px;
-    z-index: 1000;
-    opacity: 0;
-
-    &.fade-in {
-      @include fadeInUp(
-        $duration: 600ms
-      );
-    }
-
-    &.fade-out {
-      @include fadeOut(
-        $duration: 300ms
-      );
-    }
-
-    li {
-      height: 30px;
-      width: 30px;
-      -webkit-transform-style: preserve-3d;
-      -moz-transform-style: preserve-3d;
-      transform-style: preserve-3d;
-
-      span {
-        display: block;
-        width: 15px;
-        height: 15px;
-        margin: 0 auto;
-        border: 2px solid $blue-light;
-        border-radius: 50%;  
-        @include vertical-align;
-        @include transition(all 100ms ease);
-
-        &:hover:not(.active) {
-          cursor: pointer;
-          height: 18px;
-          width: 18px;
-          @include transition(all 100ms ease);
-        }
-
-        &.active {
-          background-color: $blue-light;
-        }              
-      }
-
-      &:first-child {
-        height: 42px;
-
-        span {
-          width: 25px;
-          height: 25px;
-
-          &:hover:not(.active) {
-            height: 28px;
-            width: 28px;
-            @include transition(all 100ms ease);
-          }
-        }
-      }
-    }
-  }
-
-  .page-section-inner {
-    height: 789px;
-    overflow: hidden;
+  &.page-section-wrapper {
+    background: url(../images/bg-page-slider.jpg) center center / cover;
     position: relative;
 
-    .page-slide {
-      position: relative;
-      overflow: hidden;
+    .page-slide-nav {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      margin-top: -65px;
+      z-index: 1000;
+      opacity: 0;
+
+      &.fade-in {
+        @include fadeInUp(
+          $duration: 600ms
+        );
+      }
+
+      &.fade-out {
+        @include fadeOut(
+          $duration: 300ms
+        );
+      }
+
+      li {
+        height: 30px;
+        width: 30px;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+
+        span {
+          display: block;
+          width: 15px;
+          height: 15px;
+          margin: 0 auto;
+          border: 2px solid $blue-light;
+          border-radius: 50%;  
+          @include vertical-align;
+          @include transition(all 100ms ease);
+
+          &:hover:not(.active) {
+            cursor: pointer;
+            height: 18px;
+            width: 18px;
+            @include transition(all 100ms ease);
+          }
+
+          &.active {
+            background-color: $blue-light;
+          }              
+        }
+
+        &:first-child {
+          height: 42px;
+
+          span {
+            width: 25px;
+            height: 25px;
+
+            &:hover:not(.active) {
+              height: 28px;
+              width: 28px;
+              @include transition(all 100ms ease);
+            }
+          }
+        }
+      }
+    }
+
+    .page-section-inner {
       height: 789px;
-      text-align: center;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
+      overflow: hidden;
+      position: relative;
 
-      // putting any top / bottom padding on this element will
-      // likely cause the page slide js to not work properly. If
-      // you need padding, please apply it to an inner wrapper.
+      .page-slide {
+        position: relative;
+        overflow: hidden;
+        height: 789px;
 
-      .page-slide-inner {
-        padding-top: 60px;
-      }
+        // putting any top / bottom padding on this element will
+        // likely cause the page slide js to not work properly. If
+        // you need padding, please apply it to an inner wrapper.
 
-      h2 {
-        font-size: 60px;
-        margin: 35px 0 30px;
-      }
-
-      p {
-        line-height: 175%;
-      }
-
-      .btn-bar {
-        margin: 35px 0;
-
-        .btn {
-          margin: 0 10px;
-        } 
-      }
-
-      .page-slide-image {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      &.intro {
-        .photo-devices, .mobile-only-content  {
-          display: none
-        }
-
-        .title {
-          padding-top: 25px;
+        .content {
           text-align: center;
-
-          h2 {
-            display: inline-block;
-            padding: 0 15px;
-            margin-top: 0;
-            position: relative;
-            top: 10px;
-          }
-          
-          p {
-            display: inline-block;
-            color: #b5bdc0;
-            padding: 12px 15px;
-            border-left: 1px solid #4e5058;
-            font-style: italic;
-          }
+          padding: 0 20px;
         }
 
-        &.animate-prepare {
-          .devices > li > img {
-            opacity: 0;
-          }
+        h2 {
+          font-size: 60px;
+          margin: 30px 0 20px;
         }
 
-        &.animate-on {
-          .device-note-edge > img {
-            @include fadeInUp(
-              $duration: 1s
-            );              
-          }
-
-          .device-note-4 > img {
-            @include fadeInUp(
-              $duration: 1s,
-              $delay: .2s
-            );              
-          }
-
-          .device-gear-s > img {
-            @include fadeInUp(
-              $duration: 1s,
-              $delay: .4s
-            );              
-          }        
+        p {
+          line-height: 175%;
         }
 
-        .devices {
-          li {
-            position: absolute;
+        .btn-bar {
+          margin: 35px 0;
+
+          .btn {
+            margin: 0 8px;
+          } 
+        }
+
+        .page-slide-image {
+          position: absolute;
+        }
+
+        &.content-center {
+          .content {
+            padding-top: 60px;
+          }
+
+          .page-slide-image {
+            top: 0;
             bottom: 0;
+            left: 0;
+            right: 0;
+          }          
+        }
+
+        &.content-left {
+          .content {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 50%;
+            transform: translateY(-50%);
+
+            .content-inner {
+              display: inline-block;
+              text-align: left;
+
+              .btn-bar {
+                margin-bottom: 0;
+
+                .btn:first-child {
+                  margin-left: 0;
+                }
+              }
+            }
+          }
+
+          .page-slide-image {
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+          }          
+        }
+
+        &.intro {
+          .photo-devices, .mobile-only-content  {
+            display: none
+          }
+
+          .title {
+            padding-top: 25px;
             text-align: center;
 
-            div {
-              margin: 0 auto 25px;
+            h2 {
               display: inline-block;
+              padding: 0 15px;
+              margin-top: 0;
+              position: relative;
+              top: 10px;
+            }
+            
+            p {
+              display: inline-block;
+              color: #b5bdc0;
+              padding: 12px 15px;
+              border-left: 1px solid #4e5058;
+              font-style: italic;
+            }
+          }
 
-              img {
-                margin: 10px 15px;
-              }
+          &.animate-prepare {
+            .devices > li > img {
+              opacity: 0;
+            }
+          }
 
-              a {
-                float: right;
-                width: 44px;
-                height: 44px;
-                background: transparent url(../images/circular-arrow.png) no-repeat;
-                @include transition(transform 150ms ease);
-
-                &:hover {
-                  @include transform(rotate(90deg));
-                  @include transition(transform 150ms ease);
-                }
-              }
+          &.animate-on {
+            .device-note-edge > img {
+              @include fadeInUp(
+                $duration: 1s
+              );              
             }
 
-            &.device-note-edge {
-              width: 38%;
-              left: 1%;
-              z-index: 500;
+            .device-note-4 > img {
+              @include fadeInUp(
+                $duration: 1s,
+                $delay: .2s
+              );              
+            }
+
+            .device-gear-s > img {
+              @include fadeInUp(
+                $duration: 1s,
+                $delay: .4s
+              );              
+            }        
+          }
+
+          .devices {
+            li {
+              position: absolute;
+              bottom: 0;
+              text-align: center;
 
               div {
-                position: relative;
-                right: 28px;
-              }
-            }
+                margin: 0 auto 25px;
+                display: inline-block;
 
-            &.device-note-4 {
-              width: 38%;
-              left: 33%;
-              z-index: 400;
-            }
-          
-            &.device-gear-s {
-              width: 34%;
-              left: 66%;
-              z-index: 300;
-
-              div {
                 img {
-                  margin-top: 4px;
+                  margin: 10px 15px;
+                }
+
+                a {
+                  float: right;
+                  width: 44px;
+                  height: 44px;
+                  background: transparent url(../images/circular-arrow.png) no-repeat;
+                  @include transition(transform 150ms ease);
+
+                  &:hover {
+                    @include transform(rotate(90deg));
+                    @include transition(transform 150ms ease);
+                  }
                 }
               }
-            }      
+
+              &.device-note-edge {
+                width: 38%;
+                left: 1%;
+                z-index: 500;
+
+                div {
+                  position: relative;
+                  right: 28px;
+                }
+              }
+
+              &.device-note-4 {
+                width: 38%;
+                left: 33%;
+                z-index: 400;
+              }
+            
+              &.device-gear-s {
+                width: 34%;
+                left: 66%;
+                z-index: 300;
+
+                div {
+                  img {
+                    margin-top: 4px;
+                  }
+                }
+              }      
+            }
+          }
+        }
+
+        &.s-pen {
+          .content p {
+            max-width: 435px;
           }
         }
       }
@@ -392,10 +437,10 @@ body {
 
 /* Large devices (large desktops, 1200px and down) */
 @media (max-width: $screen-lg-min) {
-  .device-explorer {
+  .device-explorer.page-section-wrapper {
     .page-section-inner {
       .page-slide {
-        .page-slide-inner {
+        .content {
           h2 {
             margin: 15px 0 10px;
           }
@@ -455,7 +500,7 @@ body {
 
 /* Larger Than Small devices (tablets, 769px and --> UP) */
 @media (min-width: $screen-sm-min + 1) {
-  .device-explorer .page-section-inner .page-slide {
+  .device-explorer.page-section-wrapper .page-section-inner .page-slide {
     &.animate-prepare {
       .page-slide-image {
         opacity: 0;
@@ -475,25 +520,45 @@ body {
         background: transparent url(../images/desktop-photo-notifications.png) bottom center / 100% auto no-repeat;
       }
     }
+
+    &.s-pen {
+      .page-slide-image {
+        background: transparent url(../images/photo-pen.png) bottom left / 88% auto no-repeat;
+      }
+    }    
   }  
 }
 
 /* Larger Than Small devices, Smaller Than Medium devices */
 @media (min-width: $screen-sm-min + 1) and (max-width: $screen-md-min) {
-  .device-explorer {
+  .device-explorer.page-section-wrapper {
     .page-section-inner {
       .page-slide {
-        .page-slide-inner {
+        &.content-center .content {
           padding-top: 25px;
+        }
 
+        .content {
           h2 {
             margin: 10px 0 5px;
+            font-size: 52px;
           }
 
           .btn-bar {
             margin: 20px 0;
           }
         }
+
+        &.content-left {
+          .btn-bar {
+            .btn {
+              margin-right: 5px;
+              margin-left: 5px;
+              padding-right: 35px;
+              padding-left: 35px;
+            }
+          }
+        }        
       }
     }
   }
@@ -501,7 +566,7 @@ body {
 
 /* Small devices (tablets, 768px and --> DOWN) */
 @media (max-width: $screen-sm-min) {
-  .device-explorer {
+  .device-explorer.page-section-wrapper {
     .page-slide-nav {
         display: none;
     }
@@ -677,7 +742,7 @@ body {
 
 /* Smallest devices (tablets, 375px and down) */
 @media (max-width: 375px) {
-  .device-explorer .page-section-inner .page-slide.intro .intro-inner {
+  .device-explorer.page-section-wrapper .page-section-inner .page-slide.intro .intro-inner {
     .mobile-sub-content .carousel-text-content .buttons .btn {
       margin-right: 0;
     } 
