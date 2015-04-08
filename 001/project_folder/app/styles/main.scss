@@ -79,11 +79,12 @@ button.unstyled {
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 15px 60px;
   text-align: center;
   text-transform: uppercase;
   border-radius: 0;
-  font-size: 18px;  
+  font-size: 16px;
+  @include transition(all 300ms ease);
 
   &.btn-dark {
     border: 1px solid #fff;
@@ -96,7 +97,6 @@ button.unstyled {
   }
 
   &.btn-blue {
-    padding: 10px 20px;
     border: 1px solid $blue-light;
     color: $blue-light;
 
@@ -220,6 +220,43 @@ body {
       position: relative;
       overflow: hidden;
       height: 789px;
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+
+      // putting any top / bottom padding on this element will
+      // likely cause the page slide js to not work properly. If
+      // you need padding, please apply it to an inner wrapper.
+
+      .page-slide-inner {
+        padding-top: 60px;
+      }
+
+      h2 {
+        font-size: 60px;
+        margin: 35px 0 30px;
+      }
+
+      p {
+        line-height: 175%;
+      }
+
+      .btn-bar {
+        margin: 35px 0;
+
+        .btn {
+          margin: 0 10px;
+        } 
+      }
+
+      .page-slide-image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
 
       &.intro {
         .photo-devices, .mobile-only-content  {
@@ -233,7 +270,6 @@ body {
           h2 {
             display: inline-block;
             padding: 0 15px;
-            font-size: 60px;
             margin-top: 0;
             position: relative;
             top: 10px;
@@ -354,63 +390,116 @@ body {
 
 }
 
-/* Small devices (large desktops, 375px and down) */
-@media (max-width: 375px) {
-
-}
-
 /* Large devices (large desktops, 1200px and down) */
 @media (max-width: $screen-lg-min) {
   .device-explorer {
     .page-section-inner {
-      .page-slide.intro {
-        .title {
-          p {
-            display: block;
-            border-left: 0;
+      .page-slide {
+        .page-slide-inner {
+          h2 {
+            margin: 15px 0 10px;
+          }
+
+          .btn-bar {
+            margin: 25px 0;
           }
         }
 
-        .devices li {
-          bottom: -40px;
-
-          div {
-            margin-bottom: 10px;
-
-            img {
-              width: 60%;
-              margin: 14px 0px 14px 10px;
+        &.intro {
+          .title {
+            p {
+              display: block;
+              border-left: 0;
             }
           }
 
-          & > img {
-            max-width: 90%;
-          }
-
-          &.device-note-edge {
-            left: 3%;
+          .devices li {
+            bottom: -40px;
 
             div {
-              right: 38px;
+              margin-bottom: 10px;
+
+              img {
+                width: 60%;
+                margin: 14px 0px 14px 10px;
+              }
             }
+
+            & > img {
+              max-width: 90%;
+            }
+
+            &.device-note-edge {
+              left: 3%;
+
+              div {
+                right: 38px;
+              }
+            }
+
+            &.device-gear-s {
+              left: 63%;
+
+              div img {
+                width: 45%;
+                margin-right: 8px;
+                margin-top: 11px;
+              }
+            }          
           }
-
-          &.device-gear-s {
-            left: 63%;
-
-            div img {
-              width: 45%;
-              margin-right: 8px;
-              margin-top: 11px;
-            }
-          }          
         }
       }
     }
   }
 }
 
-/* Small devices (tablets, 768px and down) */
+/* Larger Than Small devices (tablets, 769px and --> UP) */
+@media (min-width: $screen-sm-min + 1) {
+  .device-explorer .page-section-inner .page-slide {
+    &.animate-prepare {
+      .page-slide-image {
+        opacity: 0;
+      }
+    }
+
+    &.animate-on {
+      .page-slide-image {
+        @include fadeInUp(
+          $duration: 1s
+        );              
+      }
+    }
+
+    &.notifications {
+      .page-slide-image {
+        background: transparent url(../images/desktop-photo-notifications.png) bottom center / 100% auto no-repeat;
+      }
+    }
+  }  
+}
+
+/* Larger Than Small devices, Smaller Than Medium devices */
+@media (min-width: $screen-sm-min + 1) and (max-width: $screen-md-min) {
+  .device-explorer {
+    .page-section-inner {
+      .page-slide {
+        .page-slide-inner {
+          padding-top: 25px;
+
+          h2 {
+            margin: 10px 0 5px;
+          }
+
+          .btn-bar {
+            margin: 20px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and --> DOWN) */
 @media (max-width: $screen-sm-min) {
   .device-explorer {
     .page-slide-nav {

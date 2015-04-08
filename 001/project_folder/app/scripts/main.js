@@ -19,13 +19,14 @@
             if (index === 0) {
                 $slideNav.addClass('fade-out')
                     .removeClass('fade-in');
-                $slides.eq(0)
-                    .removeClass('animate-on')
-                    .addClass('animate-prepare');
             } else {
                 $slideNav.addClass('fade-in')
                     .removeClass('fade-out');                
             }
+
+            $slides.eq(index)
+                .removeClass('animate-on')
+                .addClass('animate-prepare');            
 
             $slideNavButtons.filter('.active')
                 .removeClass('active');
@@ -36,11 +37,9 @@
                 $slideNavButtons.eq(index)
                     .addClass('active');
 
-                if (index === 0) {
-                    $slides.eq(index)
-                        .removeClass('animate-prepare')
-                        .addClass('animate-on');
-                }
+                $slides.eq(index)
+                    .removeClass('animate-prepare')
+                    .addClass('animate-on');
             });
         }
     }
@@ -93,9 +92,14 @@
     function setContainerHeights() {
         var curPageSlideIndex;
 
-        if (Modernizr.mq('(min-width: 769px) and (max-width: 1200px)')) {
-            $slideContainer.add($slides)
-                .height($slideContainer.width() * (789 / 1216));
+        if (Modernizr.mq('(min-width: 769px)')) {
+            if (Modernizr.mq('(max-width: 1200px)')) {
+                // $slideContainer.add($slides)
+                $slideContainer
+                    .height(
+                        Math.floor($slideContainer.width() * (789 / 1216))
+                    );
+            }
 
             // adjust the scroll position of the page slides
             curPageSlideIndex = $slideNavButtons.filter('.active')
@@ -112,7 +116,7 @@
 
                 $mobilePhotoCarouselSlides.height($mobilePhotoCarousel.width() * (335 / 375));
 
-                // todo: for this one, we will size the slides to be equal to the height
+                // for this one, we will size the slides to be equal to the height
                 // of the largest one. Would using display:table do just that for us
                 // albeit with pure css? hmm...
                 $mobileContentCarouselSlides.each(function() {
