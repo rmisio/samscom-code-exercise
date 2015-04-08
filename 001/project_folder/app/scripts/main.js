@@ -109,6 +109,9 @@
                     .height(
                         Math.floor($slideContainer.width() * (789 / 1216))
                     );
+            } else {
+                $slideContainer.add($slides)
+                    .css('height', '');
             }
 
             // adjust the scroll position of the page slides

@@ -622,6 +622,14 @@ body {
           }
         }
 
+        &.intro {
+          .title {
+            h2 {
+              margin-bottom: 10px;
+            }
+          }
+        }
+
         &.display {
           .page-slide-image {
             background-position: bottom -10px center;
@@ -664,7 +672,7 @@ body {
           background-color: black;
           @include top-black-arrow;
 
-          title {
+          .title {
             margin-bottom: 22px;
 
             h2 {
