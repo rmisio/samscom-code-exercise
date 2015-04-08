@@ -263,7 +263,7 @@ body {
             bottom: 0;
             left: 0;
             right: 0;
-          }          
+          }
         }
 
         &.content-left {
@@ -415,6 +415,12 @@ body {
             max-width: 435px;
           }
         }
+
+        &.display {
+          .content {
+            padding-top: 40px;
+          }
+        }
       }
     }
   }
@@ -525,6 +531,12 @@ body {
       .page-slide-image {
         background: transparent url(../images/photo-pen.png) bottom left / 88% auto no-repeat;
       }
+    }
+
+    &.display {
+      .page-slide-image {
+        background: transparent url(../images/desktop-photo-display.png) bottom center / 100% auto no-repeat;
+      }
     }    
   }  
 }
@@ -557,6 +569,13 @@ body {
               padding-right: 35px;
               padding-left: 35px;
             }
+          }
+        }
+
+        &.display {
+          .page-slide-image {
+            background-position: bottom -10px center;
+            background-size: 95%;
           }
         }        
       }
