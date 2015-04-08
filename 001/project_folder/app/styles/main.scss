@@ -215,7 +215,7 @@ body {
 
         .tooltip {
           margin-left: -12px;
-          
+
           .tooltip-arrow {
             border-left-color: $blue-light;
             right: -7px;
@@ -381,15 +381,17 @@ body {
               text-align: center;
 
               div {
-                margin: 0 auto 25px;
+                margin: 0 auto 18px;
                 display: inline-block;
 
                 img {
                   margin: 10px 15px;
+                  display: inline-block;
+                  vertical-align: baseline;
                 }
 
                 a {
-                  float: right;
+                  display: inline-block;
                   width: 44px;
                   height: 44px;
                   background: transparent url(../images/circular-arrow.png) no-repeat;
@@ -417,6 +419,11 @@ body {
                 width: 38%;
                 left: 33%;
                 z-index: 400;
+
+                div {
+                  position: relative;
+                  right: 8px;
+                }
               }
             
               &.device-gear-s {
@@ -425,8 +432,11 @@ body {
                 z-index: 300;
 
                 div {
+                  position: relative;
+                  right: 25px;
+
                   img {
-                    margin-top: 4px;
+                    vertical-align: bottom;
                   }
                 }
               }      
@@ -495,8 +505,7 @@ body {
               margin-bottom: 10px;
 
               img {
-                width: 60%;
-                margin: 14px 0px 14px 10px;
+                width: 45%;
               }
             }
 
@@ -516,9 +525,8 @@ body {
               left: 63%;
 
               div img {
-                width: 45%;
-                margin-right: 8px;
-                margin-top: 11px;
+                width: 40%;
+                margin-bottom: 14px;
               }
             }          
           }
