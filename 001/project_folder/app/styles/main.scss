@@ -230,6 +230,8 @@ body {
         .content {
           text-align: center;
           padding: 0 20px;
+          position: relative;
+          z-index: 200;
         }
 
         h2 {
@@ -251,6 +253,7 @@ body {
 
         .page-slide-image {
           position: absolute;
+          z-index: 100;
         }
 
         &.content-center {
