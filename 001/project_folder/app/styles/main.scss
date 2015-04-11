@@ -584,7 +584,7 @@ body {
 
       &.display {
         .page-slide-image {
-          background: transparent url(../images/desktop-photo-display.png) bottom center / 100% auto no-repeat;
+          background: transparent url(../images/photo-display.png) bottom center / 100% auto no-repeat;
         }
       }    
     }
@@ -768,19 +768,34 @@ body {
                 @include fadeInRight(
                   $duration: 300ms
                 );
+              }
+
+              .carousel-photo {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+              }
+
+              &.notifications {
+                .carousel-photo {
+                  background: transparent url(../images/photo-notifications.png) center center / 100% auto no-repeat;
+                }
+              }
+
+              &.pen {
+                .carousel-photo {
+                  background: transparent url(../images/photo-pen.png) top 30px center/auto 100% no-repeat;
+                }
+              }
+
+              &.display {
+                .carousel-photo {
+                  width: 160%;
+                  right: 57%;
+                  background: transparent url(../images/photo-display.png) center left / 100% auto no-repeat;
+                }
               }              
-            }
-
-            .notifications {
-              background: transparent url(../images/photo-notifications.png) center center / 100% auto no-repeat;
-            }
-
-            .pen {
-              background: transparent url(../images/photo-pen.png) top 30px center/auto 100% no-repeat;
-            }
-
-            .display {
-              background: transparent url(../images/photo-display.png) center left / 100% auto no-repeat;
             }
           }
 

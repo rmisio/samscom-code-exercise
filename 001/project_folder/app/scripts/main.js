@@ -66,12 +66,17 @@
         $carouselControlButtons.removeClass('active');
         $target.removeClass('animate-on')
             .addClass('animate-prepare');
-        $mobileContentCarousel.carousel($target.index());
+        $mobileContentCarousel.carousel(
+            e.direction === 'left' ? 'next' : 'prev'
+        );
     }).on('slid.bs.carousel', function (e) {
         var $target = $(e.relatedTarget);
 
         $target.removeClass('animate-prepare')
-            .addClass('animate-on');
+            .addClass('animate-on')
+            .find('.carousel-photo')
+            .css('right', '');
+
         $carouselControlButtons.eq($target.index())
             .addClass('active');
     });
@@ -95,6 +100,35 @@
         } else {
             $mobilePhotoCarousel.carousel('prev');
         }
+    });
+
+    hammeMobilePhotoCar.on('pan', function(e) {
+        var $target,
+            right,
+            rightParsed,
+            units;
+
+        $target = $(e.target);
+        if (!$target.hasClass('carousel-photo')) {
+            return;
+        }
+        $target.css('right', '');
+
+        right = $target.css('right');
+        right = right === 'auto' ? '0px' : right;
+        rightParsed = parseFloat(right);
+        units = right.length > rightParsed.toString().length ?
+            right.substr(rightParsed.toString().length) : '';
+
+        if (units === '%') {
+            rightParsed = (rightParsed / 100) * $target.offsetParent().width();
+        } else if (units !== 'px') {
+            throw new Error('Unsupported unit type. For the .carousel-photo element, please use '
+                + 'only px or % as units for the right property.');
+            // to support any other type, please update this method to convert it to px.
+        }
+
+        $target.css('right',  rightParsed - e.deltaX);
     });
 
     // Depending on what media query is active, set the height of
